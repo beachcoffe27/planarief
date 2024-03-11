@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rencana Belajar Pemrograman</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f5f5f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #3498db;
+      }
+
+      table {
+        width: 80%;
+        margin-top: 30px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+
+      th,
+      td {
+        padding: 20px;
+        font-size: 16px;
+        border-bottom: 1px solid #ecf0f1;
+        position: relative;
+      }
+
+      th {
+        background-color: #3498db;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      tr {
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      tr.checked {
+        background-color: #d0f6cb; /* Warna background saat checklist */
+      }
+
+      tr:hover {
+        background-color: #e0e0e0;
+      }
+
+      .checklist-button {
+        margin-top: 10px;
+        font-size: 16px;
+        background-color: #74db19;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .checklist-button:hover {
+        background-color: #37a4c6;
+      }
+
+      .checklist-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
+
+      .checklist-icon::before {
+        content: "\2714"; /* Unicode checkmark character */
+        font-size: 20px;
+        color: #016e08;
+      }
+
+      .checklist-icon.show {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+
+      .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .close-popup {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rencana Belajar Pemrograman</h1>
+
+    <table id="learningPlan">
+      <thead>
+        <tr>
+          <th>Minggu</th>
+          <th>Topik</th>
+          <th>Materi</th>
+          <th>Latihan/Proyek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1-2</td>
+          <td>Pengenalan Dasar</td>
+          <td>
+            <strong>Hari 1-2:</strong> Pengenalan HTML <br /><strong
+              >Hari 3-4:</strong
+            >
+            Mengenal CSS
+          </td>
+          <td>
+            <button class="checklist-button" onclick="markAsCompleted(this)">
+              <div class="checklist-icon"></div>
+              Checklist
+            </button>
+            Buat halaman web sederhana dengan HTML dan terapkan styling
+            sederhana dengan CSS.
+          </td>
+        </tr>
+        <tr>
+          <td>3-4</td>
+          <td>Pemahaman Lanjutan</td>
+          <td>
+            <strong>Hari 5-7:</strong> Mendalam pada CSS (Flexbox, Grid)
+            <br /><strong>Hari 8-10:</strong> Pengenalan JavaScript
+            <br /><strong>Hari 11-14:</strong> Kontrol Alur Program dengan
+            JavaScript
+          </td>
+          <td>
+            <button class="checklist-button" onclick="markAsCompleted(this)">
+              <div class="checklist-icon"></div>
+              Checklist
+            </button>
+            Pelajari konsep layout dengan CSS (Flexbox dan Grid) dan mulai
+            belajar dasar-dasar JavaScript.
+          </td>
+        </tr>
+        <tr>
+          <td>5-6</td>
+          <td>Interaktivitas dan Responsivitas</td>
+          <td>
+            <strong>Hari 15-18:</strong> Event dan DOM Manipulation
+            <br /><strong>Hari 19-21:</strong> Responsivitas dengan Media Query
+          </td>
+          <td>
+            <button class="checklist-button" onclick="markAsCompleted(this)">
+              <div class="checklist-icon"></div>
+              Checklist
+            </button>
+            Tanggapi event dengan JavaScript, manipulasi DOM untuk
+            interaktivitas, dan terapkan media query untuk membuat halaman
+            responsif.
+          </td>
+        </tr>
+        <tr>
+          <td>7-8</td>
+          <td>Proyek Kecil dan Review</td>
+          <td>
+            <strong>Hari 22-25:</strong> Proyek Kecil (Contoh: To-Do List)
+            <br /><strong>Hari 26-28:</strong> Review dan Pemahaman Lanjutan
+          </td>
+          <td>
+            <button class="checklist-button" onclick="markAsCompleted(this)">
+              <div class="checklist-icon"></div>
+              Checklist
+            </button>
+            Buat proyek kecil menggunakan HTML, CSS, dan JavaScript. Tinjau
+            materi-materi sebelumnya dan pelajari topik lanjutan sesuai minat.
+          </td>
+        </tr>
+        <tr>
+          <td>9-10</td>
+          <td>Praktek Lebih Lanjut dan Pengembangan</td>
+          <td>
+            <strong>Hari 29-35:</strong> Praktek Lebih Lanjut (Contoh: Mini
+            Blog) <br /><strong>Hari 36-42:</strong> Pengembangan Proyek Pribadi
+          </td>
+          <td>
+            <button class="checklist-button" onclick="markAsCompleted(this)">
+              <div class="checklist-icon"></div>
+              Checklist
+            </button>
+            Kerjakan tantangan pemrograman kecil, ikuti tutorial online, dan
+            mulai proyek lebih besar atau tingkatkan proyek kecil.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="successPopup" class="popup-container">
+      <div class="popup">
+        <span class="close-popup" onclick="closePopup()">&times;</span>
+        <h2>Selamat!</h2>
+        <p>Anda telah menyelesaikan rencana belajar. Keep up the good work!</p>
+      </div>
+    </div>
+
+    <script>
+      function markAsCompleted(button) {
+        var row = button.parentNode.parentNode;
+        row.classList.toggle("checked");
+        row.classList.add("checklist-animation");
+        toggleChecklistIcon(button);
+        checkCompletion();
+      }
+
+      function toggleChecklistIcon(button) {
+        var icon = button.querySelector(".checklist-icon");
+        icon.classList.toggle("show");
+      }
+
+      function checkCompletion() {
+        var tableRows = document.querySelectorAll("#learningPlan tbody tr");
+        var completedRows = document.querySelectorAll(
+          "#learningPlan tbody tr.checked"
+        );
+
+        if (completedRows.length === tableRows.length) {
+          showSuccessPopup();
+        }
+      }
+
+      function showSuccessPopup() {
+        var successPopup = document.getElementById("successPopup");
+        successPopup.style.display = "flex";
+      }
+
+      function closePopup() {
+        var successPopup = document.getElementById("successPopup");
+        successPopup.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
